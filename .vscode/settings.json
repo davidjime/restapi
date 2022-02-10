@@ -1,0 +1,8 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "jar\\javax.servlet-api-4.0.1.jar",
+        "jar\\json-simple-1.1.1.jar",
+        "jar\\json-20211205.jar"
+    ]
+}
