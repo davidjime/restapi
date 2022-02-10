@@ -13,20 +13,20 @@ public class Serv extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
 		String requestUrl = request.getRequestURI();
-		String name = requestUrl.substring("/people/".length());
+		String name = requestUrl.substring("/movements/".length());
 		
-		Person person = Data.getInstance().getPerson(name);
+		Movement movement = Data.getInstance().GetMovement(name).getString("name");
 		
-		if(person != null){
+		if(movement != null){
 			String json = "{\n";
-			json += "\"name\": " + JSONObject.quote(person.getName()) + ",\n";
-			json += "\"about\": " + JSONObject.quote(person.getAbout()) + ",\n";
-			json += "\"birthYear\": " + person.getBirthYear() + "\n";
+			json += "\"name\": " + JSONObject.quote(movement.getName()) + ",\n";
+			json += "\"about\": " + JSONObject.quote(movement.getAbout()) + ",\n";
+			json += "\"birthYear\": " + movement.getBirthYear() + "\n";
 			json += "}";
 			response.getOutputStream().println(json);
 		}
 		else{
-			//That person wasn't found, so return an empty JSON object. We could also return an error.
+			//That  wasn't found, so return an empty JSON object. We could also return an error.
 			response.getOutputStream().println("{}");
 		}
 	}
@@ -40,6 +40,6 @@ public class Serv extends HttpServlet {
 		String about = request.getParameter("about");
 		int birthYear = Integer.parseInt(request.getParameter("birthYear"));
 		
-		Data.getInstance().putPerson(new Person(name, about, birthYear, password));
+		//Data.getInstance().putPerson(new Person(name, about, birthYear, password));
 	}
 }

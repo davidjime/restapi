@@ -2,7 +2,7 @@ public class Movement {
         private String name;
         private String equipment;
         private String primaryMuscle;
-        private String[] auxiliaryMuscles;
+        private String auxiliaryMuscle;
         
         public Movement(String name, String equipment, String primaryMuscle) {
             this.name = name;
